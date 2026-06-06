@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap');
+
 .notfound-container {
   position: relative;
   width: 100vw !important;
@@ -17,7 +19,8 @@
   position: relative;
   z-index: 5;
   background: rgba(12, 12, 14, 0.4) !important;
-  backdrop-filter: blur(20px) !webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important; /* 🌟 FIXED: Syntax override for Safari browser */
   border: 1px solid rgba(255, 255, 255, 0.03) !important;
   border-radius: 24px !important;
   padding: 4rem 3rem !important;
@@ -25,7 +28,19 @@
   width: 90% !important;
   text-align: center;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), 0 0 50px rgba(139, 92, 246, 0.01) !important;
-  animation: modal-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: modal-fade-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards !important; /* Keyframes mapped securely */
+}
+
+/* 🌟 FIXED: Missing Keyframes Configuration Added Safely */
+@keyframes modal-fade-in {
+  from {
+    transform: scale(0.95) translateY(10px);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1) translateY(0);
+    opacity: 1;
+  }
 }
 
 /* Header Code Block Tracking Tag */
@@ -70,6 +85,7 @@
   letter-spacing: -2px !important;
   background: linear-gradient(180deg, #ffffff 0%, #a1a1aa 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
 }
@@ -89,7 +105,7 @@
   margin: 0 0 2rem 0;
 }
 
-/* ➡️ Premium Meta Tags Segment Layout Track */
+/* Premium Meta Tags Segment Layout Track */
 .error-meta-tags-row {
   display: flex;
   align-items: center;
@@ -115,7 +131,7 @@
   background: rgba(255, 255, 255, 0.03);
 }
 
-/* ➡️ Custom Premium Matte Black Back Button Style UI Override */
+/* Custom Premium Matte Black Back Button Style UI Override */
 .notfound-action-btn-back {
   display: flex;
   align-items: center;
@@ -147,7 +163,7 @@
 }
 
 .notfound-action-btn-back:hover .arrow-left-svg {
-  transform: translateX(-3px); /* Interactive visual micro-animation nudge */
+  transform: translateX(-3px);
 }
 
 /* Responsive constraints controls scaling variables */
