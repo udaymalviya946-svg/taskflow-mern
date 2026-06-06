@@ -1,0 +1,318 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.login-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #030303;
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* SaaS Grid Layout */
+.saas-grid-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+  z-index: 1;
+}
+
+.saas-ambient-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
+  z-index: 1;
+}
+
+/* ➡️ 1. Outer Glow Track Component */
+.border-glow-wrapper {
+  position: relative;
+  width: 90%;
+  max-width: 420px;
+  padding: 1px; /* Line width indicator */
+  border-radius: 12px;
+  overflow: hidden;
+  z-index: 2;
+  background: #1e1e24; /* Faint resting border fallback */
+}
+/* ➡️ Continuous Ultra-Smooth Rotating Laser Glow Line */
+.border-glow-wrapper::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: 1;
+  
+  /* Solid professional neon tail spread */
+  background: conic-gradient(
+    transparent, 
+    transparent, 
+    rgba(167, 139, 250, 0.85) 15%, 
+    #7c3aed 25%, 
+    transparent 40%
+  );
+  
+  /* Linear continuous rotation rotation without any sudden jerks or stops */
+  animation: cleanContinuousRotate 2.5s linear infinite;
+}
+
+/* ➡️ Pure Infinite Rotation Logic */
+@keyframes cleanContinuousRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ➡️ 3. Actual Central Solid Matte Shield */
+.login-glass-card {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 3rem 2.5rem;
+  background: #09090b; /* Pitch black shield masking internal rotation */
+  border-radius: 11px; /* Slightly smaller to respect the outer wrapper tracking */
+  box-sizing: border-box;
+}
+
+
+/* Header Elements */
+.login-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logo-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: rgba(124, 58, 237, 0.1);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  color: #a78bfa;
+}
+
+.logo-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.login-header h2 {
+  color: #ffffff;
+  font-size: 1.75rem;
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.purple-text {
+  color: #a78bfa;
+}
+
+.login-header p {
+  color: #a1a1aa;
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+/* Inputs Architecture */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.input-group label {
+  color: #e4e4e7;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.input-group input, 
+.password-input-wrapper input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: #141416 !important;
+  border: 1px solid #27272a;
+  border-radius: 6px;
+  color: #ffffff !important;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  outline: none;
+  box-sizing: border-box;
+}
+
+/* Autofill Hack Protection */
+.input-group input:-webkit-autofill,
+.input-group input:-webkit-autofill:hover, 
+.input-group input:-webkit-autofill:focus,
+.password-input-wrapper input:-webkit-autofill,
+.password-input-wrapper input:-webkit-autofill:hover,
+.password-input-wrapper input:-webkit-autofill:focus {
+  -webkit-text-fill-color: #ffffff !important;
+  -webkit-box-shadow: 0 0 0px 1000px #141416 inset !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+.input-group input:focus,
+.password-input-wrapper input:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 1px #7c3aed;
+}
+
+/* Password Visibility Component */
+.password-input-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-wrapper input {
+  padding-right: 2.75rem;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 0.85rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #71717a;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.password-toggle-btn:hover {
+  color: #ffffff;
+}
+
+.eye-icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* Error Alerts */
+.error-message {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #f87171;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.err-icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Interactive Action Buttons */
+.login-btn {
+  width: 100%;
+  padding: 0.75rem;
+  background: #ffffff;
+  border: 1px solid #ffffff;
+  border-radius: 6px;
+  color: #000000;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-btn:hover:not(:disabled) {
+  background: transparent;
+  color: #ffffff;
+  border-color: #27272a;
+}
+
+.login-btn:disabled {
+  background: #27272a;
+  border-color: #27272a;
+  color: #71717a;
+  cursor: not-allowed;
+}
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #71717a;
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.auth-redirect {
+  text-align: center;
+  color: #71717a;
+  font-size: 0.85rem;
+  margin: 2rem 0 0 0;
+}
+
+.auth-redirect a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.auth-redirect a:hover {
+  color: #a78bfa;
+}
+
+/* Responsive viewports */
+@media (max-width: 480px) {
+  .border-glow-wrapper {
+    width: 100%;
+  }
+  .login-glass-card {
+    padding: 2.25rem 1.5rem;
+  }
+}
